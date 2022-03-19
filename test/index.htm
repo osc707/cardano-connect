@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Test</title>
+    <script src="../src/cardano-connect.js"></script>
+    <style>
+      cardano-connect {
+        /* --btn-bg-color: purple;
+        --btn-text-color: white;
+        --btn-hover-bg-color: #995799;
+        --btn-hover-text-color: white; */
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: right;">
+      <div style="margin-left: 16px" id="selectedWallet"></div>
+      <cardano-connect  text="Connect wallet"></cardano-connect>
+    </div>
+    <script>
+      document.getElementsByTagName('cardano-connect')[0].addEventListener(
+        'CardanoConnectWallet',
+        (evt) => {
+          const { detail } = evt;
+          console.log(detail);
+          document.getElementById('selectedWallet').innerText = `${detail.name}, balance: ${detail.balance}`;
+        },
+      false);
+
+      document.getElementsByTagName('cardano-connect')[0].addEventListener(
+        'CardanoConnectWalletError',
+        (evt) => {
+          const { detail } = evt;
+          console.log(detail);
+          document.getElementById('selectedWallet').innerText = `${detail.name}, balance: ${detail.balance}`;
+        },
+      false);
+    </script>
+  </body>
+</html>
