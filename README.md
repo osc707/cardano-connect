@@ -16,7 +16,7 @@ Component [documentation](custom-elements.md)
 <script src="src/cardano-connect.js"></script>
 ```
 
-### Override optional CSS (optional)
+### Override CSS (optional)
 
 ```HTML
 <style>
@@ -32,16 +32,16 @@ Component [documentation](custom-elements.md)
 ### Embed component
 
 ```HTML
-<cardano-connect  text="Connect wallet"></cardano-connect>
+<cardano-connect text="Connect wallet"></cardano-connect>
 ```
 
-**text* attribute is optional, the default value is *Connect wallet*
+**text** attribute is optional, the default value is *Connect wallet*
 
 ## How does it work?
 
-When a user clicks the button a dropdown list of Cardano browser based wallets is displayed
-THen the user selects one, they are prompted by the wallet's browser plugin to sign and connect
-Once connected, the element will emit an event `CardanoConnectWallet` with contains the following:
+When a user clicks the button a dropdown list of Cardano browser based wallets is displayed.
+The user selects one, then they are prompted by the wallet's browser plugin to sign and connect.
+Once connected, the element will emit an event `CardanoConnectWallet` which contains the following:
 
 * balance: selected wallet balance
 * name: selected wallet name
@@ -57,6 +57,13 @@ Once connected, the element will emit an event `CardanoConnectWallet` with conta
   * signData
   * signTx
   * submitTx
+
+If an error occurs the element will emit an event `CardanoConnectWalletError` which contains the following:
+
+* code: error code
+* info: error info
+* name: selected wallet name
+* icon: selected wallet icon
 
 Read more: [https://github.com/cardano-foundation/CIPs/tree/master/CIP-0030](https://github.com/cardano-foundation/CIPs/tree/master/CIP-0030)
 
