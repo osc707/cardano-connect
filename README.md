@@ -4,6 +4,14 @@ This component provides a button, a list of browser based [Cardano](https://card
 When the user selects a wallet, it will attempt to connect via the browser plugin. If successful
 it will emit an event *CardanoConnectWallet* or in the case of an error *CardanoConnectWalletError*.
 
+**Make a donation** addr1qyv48l03e9gap3vxxvuc60l8d4hpgx7cf86p3tmjte70sc75dl8x2jk2urg38kkrpcmlkdn020cjqckma0t8favg62mqnjlu30
+
+## Supported Cardano wallets
+
+- Eternl
+- Nami
+- Yoroi
+
 ## Component API
 
 Component [documentation](custom-elements.md)
