@@ -1,6 +1,6 @@
 {
   "name": "cardano-connect",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Web component that facilitates connecting to Cardano browser based wallets",
   "repository": {
     "type": "git",
@@ -8,13 +8,13 @@
   },
   "author": {
     "name": "Oscar Campos",
-    "email" : "oscar.s.campos@gmail.com",
-    "url" : "https://www.blocksyweb.xyz/"
+    "email": "oscar.s.campos@gmail.com",
+    "url": "https://www.blocksyweb.xyz/"
   },
   "license": "GPL-3.0",
   "bugs": {
-    "url" : "https://github.com/osc707/cardano-connect/issues",
-    "email" : "oscar.s.campos+cardanoconnect@gmail.com"
+    "url": "https://github.com/osc707/cardano-connect/issues",
+    "email": "oscar.s.campos+cardanoconnect@gmail.com"
   },
   "homepage": "https://github.com/osc707/cardano-connect#readme",
   "type": "module",
