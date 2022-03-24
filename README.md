@@ -8,9 +8,10 @@ it will emit an event *CardanoConnectWallet* or in the case of an error *Cardano
 
 ## Supported Cardano wallets
 
-- Eternl
-- Nami
-- Yoroi
+- [Eternl](https://eternl.io/)
+- [Flint](https://chrome.google.com/webstore/detail/flint-wallet/hnhobjmcibchnmglfbldbfabcgaknlkj)
+- [Nami](https://namiwallet.io/)
+- [Yoroi](http://yoroiwallet.com/)
 
 ## Component API
 
