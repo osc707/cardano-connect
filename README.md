@@ -66,6 +66,7 @@ Once connected, the element will emit an event `CardanoConnectWallet` which cont
   * signData
   * signTx
   * submitTx
+* serializer: [cardano-serialization-lib](https://github.com/Emurgo/cardano-serialization-lib)
 
 If an error occurs the element will emit an event `CardanoConnectWalletError` which contains the following:
 

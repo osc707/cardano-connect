@@ -106,6 +106,7 @@ import { Buffer } from 'buffer';
  *     - signTx
  *     - submitTx
  *     from: https://github.com/cardano-foundation/CIPs/tree/master/CIP-0030
+ *   - serializer: cardano-serialization-lib-browser obj
  * 
  * @fires {event} CardanoConnectWalletError - when an enable event does not complete sucessfully:
  *   - code: error code
@@ -235,7 +236,8 @@ class CardanoConnect extends HTMLElement {
             detail: {
               name: cardanoWallet.name,
               icon: wallet.icon,
-              api
+              api,
+              serializer: wasm
             }
           });
           this.dispatchEvent(evt);
@@ -259,7 +261,8 @@ class CardanoConnect extends HTMLElement {
               address,
               name: cardanoWallet.name,
               icon: wallet.icon,
-              api
+              api,
+              serializer: wasm
             }
           });
           this.dispatchEvent(evt);
