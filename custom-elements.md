@@ -1,8 +1,8 @@
 # cardano-connect
 
-This component provies a button and a list of browser based Cardano wallets.
+This component provides a button and a list of browser based Cardano wallets.
 A wallet when clicked, will connect it with your site, return the name,
-icon, balance and Cardano API object to interact with.
+icon, address and Cardano API object to interact with.
 
 ## Attributes
 

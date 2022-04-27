@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>Test</title>
-    <script src="../src/cardano-connect.js"></script>
+    <script src="../dist/cardano-connect.js"></script>
     <style>
       cardano-connect {
         --btn-bg-color: purple;
@@ -13,16 +13,18 @@
   </head>
   <body>
     <div>
-      <cardano-connect  text="Connect wallet"></cardano-connect>
+      <cardano-connect text="Connect wallet"></cardano-connect>
       <div style="margin-left: 16px" id="selectedWallet"></div>
     </div>
     <script>
+      let wallet = null;
       document.getElementsByTagName('cardano-connect')[0].addEventListener(
         'CardanoConnectWallet',
         (evt) => {
           const { detail } = evt;
           console.log(detail);
-          document.getElementById('selectedWallet').innerText = `${detail.name}, balance: ${detail.balance}`;
+          wallet = detail;
+          document.getElementById('selectedWallet').innerText = `${detail.name}, address: ${detail.address}`;
         },
       false);
 

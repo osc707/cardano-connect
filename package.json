@@ -17,12 +17,11 @@
     "email": "oscar.s.campos+cardanoconnect@gmail.com"
   },
   "homepage": "https://github.com/osc707/cardano-connect#readme",
-  "type": "module",
   "main": "src/cardano-connect.js",
   "scripts": {
-    "start": "parcel ./test/index.htm --open",
-    "build": "parcel build",
-    "watch": "parcel watch"
+    "test": "http-server -o ./test/index.htm",
+    "build": "yarn clean && webpack",
+    "clean": "rm ./dist/*.*"
   },
   "keywords": [
     "cardano",
@@ -36,8 +35,15 @@
     "es6",
     "html5"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@emurgo/cardano-message-signing-browser": "^1.0.1",
+    "@emurgo/cardano-serialization-lib-browser": "^10.0.4",
+    "buffer": "^6.0.3"
+  },
   "devDependencies": {
-    "parcel": "^2.3.2"
+    "@types/node": "^17.0.29",
+    "http-server": "^14.1.0",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
   }
 }

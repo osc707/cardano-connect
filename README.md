@@ -22,7 +22,7 @@ Component [documentation](custom-elements.md)
 ### Include the script
 
 ```HTML
-<script src="src/cardano-connect.js"></script>
+<script src="dist/cardano-connect.js"></script>
 ```
 
 ### Override CSS (optional)
@@ -52,7 +52,7 @@ When a user clicks the button a dropdown list of Cardano browser based wallets i
 The user selects one, then they are prompted by the wallet's browser plugin to sign and connect.
 Once connected, the element will emit an event `CardanoConnectWallet` which contains the following:
 
-* balance: selected wallet balance
+* address: selected wallet address
 * name: selected wallet name
 * icon: selected wallet icon
 * api: Cardano API object with following properties:
