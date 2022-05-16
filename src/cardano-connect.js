@@ -210,14 +210,7 @@ class CardanoConnect extends HTMLElement {
   #toggleWallets() {
     const walletsElm = this.shadowRoot.getElementById(this.#WALLETS_ID);
     const loadingElm = this.shadowRoot.getElementById(this.#LOADING_ID);
-    const { offsetLeft } = this.shadowRoot.getElementById(this.#BUTTON_ID);
-
-    if (!walletsElm.classList.contains('hidden')) {
-      window.document.addEventListener('click', this.#toggleWallets);
-    } else {
-      window.document.removeEventListener('click', this.#toggleWallets);
-    }
-    
+    const { offsetLeft } = this.shadowRoot.getElementById(this.#BUTTON_ID);    
     // toggle display of list
     walletsElm.classList.toggle('hidden');
     this.#walletsPosition(walletsElm, offsetLeft);
