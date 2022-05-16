@@ -316,7 +316,6 @@ class CardanoConnect extends HTMLElement {
   #buildWalletList() {
     const el = this.shadowRoot.getElementById(this.#WALLETS_ID);
     let installedCount = 0;
-    console.log(this.#cardano);
     this.#wallets.forEach((wallet, idx) => {
       const isInstalled = this.#cardano.hasOwnProperty(wallet.id);
       const li = document.createElement('li');
@@ -351,7 +350,7 @@ class CardanoConnect extends HTMLElement {
       el.appendChild(li);
     });
 
-    if (installedCount <= 0) {
+    if (installedCount === 0) {
       this.#dispatchNoWalletsError()
     }
   }
@@ -365,16 +364,20 @@ class CardanoConnect extends HTMLElement {
   }
 
   #dispatchNoWalletsError() {
-    const evt = new CustomEvent(this.#EVENT_ERROR, {
+    const details = {
       bubbles: true,
-        cancelable: false,
-        composed: true,
-        detail: {
-          code: 404,
-          info: 'NO_SUPPORTED_WALLET_INSTALLED'
-        }
-    });
-    this.dispatchEvent(evt)
+      cancelable: false,
+      composed: true,
+      detail: {
+        code: 404,
+        info: 'NO_SUPPORTED_WALLET_INSTALLED'
+      }
+    };
+    const noWalletEvt = new CustomEvent('CardanoConnectWalletError', { ...details });
+    // delay to ensure that app we are connecting with is ready
+    setTimeout(() => {
+      this.dispatchEvent(noWalletEvt);
+    }, 250);
   }
 }
 
