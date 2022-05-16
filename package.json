@@ -19,7 +19,7 @@
   "homepage": "https://github.com/osc707/cardano-connect#readme",
   "main": "src/cardano-connect.js",
   "scripts": {
-    "test": "http-server -o ./test/index.htm",
+    "test": "yarn clean && webpack && http-server -o ./test/index.htm",
     "build": "yarn clean && webpack",
     "clean": "rm ./dist/*.*"
   },

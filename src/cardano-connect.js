@@ -38,6 +38,14 @@ template.innerHTML = `
       border-bottom: none;
     }
 
+    ul.cardano-wallet-list li.disabled {
+      cursor: default;
+      opacity: .5;
+    }
+    ul.cardano-wallet-list li.disabled:hover {
+      background-color: #fff;
+    }
+
     div.cardano-wallet-loading {
       background-color: #fff;
       position: absolute;
@@ -108,11 +116,16 @@ import { Buffer } from 'buffer';
  *     from: https://github.com/cardano-foundation/CIPs/tree/master/CIP-0030
  *   - serializer: cardano-serialization-lib-browser obj
  * 
- * @fires {event} CardanoConnectWalletError - when an enable event does not complete sucessfully:
+ * @fires {event} CardanoConnectWalletError - when an enable event does not complete successfully:
  *   - code: error code
  *   - info: error info
  *   - name: selected wallet name
  *   - icon: selected wallet icon
+ * 
+ * @fires {event} CardanoConnectWalletError - fired when no supported wallet is installed:
+ *   - code: 404
+ *   - info: NO_SUPPORTED_WALLET_INSTALLED
+ * 
  * 
  * @attr {String} text - Text used on the button, default is "Connect wallet"
  * 
@@ -129,6 +142,7 @@ class CardanoConnect extends HTMLElement {
   #WALLETS_ID = 'cardano-connect-wallets';
   #BUTTON_ID = 'cardano-connect-button';
   #LOADING_ID = 'cardano-connect-loading';
+  #cardano = null;
   // #ADALITE = 'Adalite';
   #NAMI = 'Nami';
   #YOROI = 'Yoroi';
@@ -185,6 +199,7 @@ class CardanoConnect extends HTMLElement {
 
   connectedCallback() {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.#cardano = window.cardano || {};
     // Setup wallets
     this.#buildWalletList();
     this.#buildLoading();
@@ -226,8 +241,7 @@ class CardanoConnect extends HTMLElement {
   }
 
   #selectWallet(wallet) {
-    const cardano = window?.cardano;
-    const cardanoWallet = cardano?.[wallet.id];
+    const cardanoWallet = this.#cardano?.[wallet.id];
     
     cardanoWallet.enable().then(
       (api) => {
@@ -294,10 +308,21 @@ class CardanoConnect extends HTMLElement {
 
   #buildWalletList() {
     const el = this.shadowRoot.getElementById(this.#WALLETS_ID);
+    let installedCount = 0;
     this.#wallets.forEach((wallet, idx) => {
+      const isInstalled = this.#cardano.hasOwnProperty(wallet);
       const li = document.createElement('li');
       li.setAttribute('id', wallet.id);
-      li.addEventListener('click', () => this.#selectWallet(wallet));
+      
+      if (isInstalled) {
+        li.addEventListener('click', () => this.#selectWallet(wallet));
+        installedCount++;
+      }
+
+      if (!isInstalled) {
+        li.setAttribute('class', 'disabled');
+      }
+      
       li.setAttribute('tabIndex', `${idx + 2}`);
       
       if (wallet.icon) { // add icon if one is defined
@@ -317,6 +342,10 @@ class CardanoConnect extends HTMLElement {
 
       el.appendChild(li);
     });
+
+    if (installedCount <= 0) {
+      this.#dispatchNoWalletsError()
+    }
   }
 
   #buildLoading() {
@@ -325,6 +354,19 @@ class CardanoConnect extends HTMLElement {
     img.src = this.#loadingGif;
     img.setAttribute('class', 'loadingImage');
     el.appendChild(img);
+  }
+
+  #dispatchNoWalletsError() {
+    const evt = new CustomEvent(this.#EVENT_ERROR, {
+      bubbles: true,
+        cancelable: false,
+        composed: true,
+        detail: {
+          code: 404,
+          info: 'NO_SUPPORTED_WALLET_INSTALLED'
+        }
+    });
+    this.dispatchEvent(evt)
   }
 }
 

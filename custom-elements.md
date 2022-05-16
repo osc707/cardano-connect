@@ -15,7 +15,8 @@ icon, address and Cardano API object to interact with.
 | Event                       | Type    | Description                                      |
 |-----------------------------|---------|--------------------------------------------------|
 | `CardanoConnectWallet`      | `event` | fired when a user selects a wallet and the payload contains:<br />- address: selected wallet address<br />- name: selected wallet name<br />- icon: selected wallet icon<br />- api: Cardano API object with following properties:<br />- getNetworkId<br />- getBalance<br />- getUtxos<br />- getUsedAddresses<br />- getUnusedAddresses<br />- getRewardAddresses<br />- getChangeAddress<br />- signData<br />- signTx<br />- submitTx<br />from: https://github.com/cardano-foundation/CIPs/tree/master/CIP-0030<br />-serializer: cardano-serialization-lib-browser obj |
-| `CardanoConnectWalletError` | `event` | when an enable event does not complete sucessfully:<br />- code: error code<br />- info: error info<br />- name: selected wallet name<br />- icon: selected wallet icon |
+| `CardanoConnectWalletError` | `event` | when an enable event does not complete successfully:<br />- code: error code<br />- info: error info<br />- name: selected wallet name<br />- icon: selected wallet icon |
+| `CardanoConnectWalletError` | `event` | fired when no supported wallet is installed:<br />- code: 404<br />- info: NO_SUPPORTED_WALLET_INSTALLED |
 
 ## CSS Custom Properties
 
