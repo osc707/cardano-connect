@@ -11,8 +11,9 @@ it will emit an event *CardanoConnectWallet* or in the case of an error *Cardano
 - [Eternl](https://eternl.io/)
 - [Flint](https://chrome.google.com/webstore/detail/flint-wallet/hnhobjmcibchnmglfbldbfabcgaknlkj)
 - [GeroWallet](https://gerowallet.io/)
-- [Yoroi](http://yoroiwallet.com/)
+- [Nami](https://namiwallet.io/)
 - [NuFi](http://nu.fi) __coming soon__
+- ~~[Yoroi](http://yoroiwallet.com/)~~
 
 ## Component API
 
@@ -42,10 +43,18 @@ Component [documentation](custom-elements.md)
 ### Embed component
 
 ```HTML
-<cardano-connect text="Connect wallet"></cardano-connect>
+<cardano-connect 
+  text="Connect wallet"></cardano-connect>
+```
+
+```HTML
+<cardano-connect 
+  text="Connect wallet"
+  json="true"></cardano-connect>
 ```
 
 **text** attribute is optional, the default value is *Connect wallet*
+**json** attribute is optional, the default value is *false*, returns a json list of supported wallets
 
 ## How does it work?
 
@@ -78,6 +87,15 @@ If an error occurs the element will emit an event `CardanoConnectWalletError` wh
 
 Read more: [https://github.com/cardano-foundation/CIPs/tree/master/CIP-0030](https://github.com/cardano-foundation/CIPs/tree/master/CIP-0030)
 
+If **json** is set to true, the component will emit `CardanoConnectWalletList` with is a json list of supported wallets. The structure looks like (array):
+
+* display: (string) Wallet display name, ex: Eternl
+* id: (string) Wallet display name, ex: eternl (internal use only)
+* installed: (boolean) if true, it was found as a property of the Cardano object in the browser
+* icon: (string) base64 image string to show the wallet icon/logo
+
+On user select, fire `CardanoConnectWalletSelected` with the entire selected wallet object to the component and it will return the needed wallet information
+
 ## Listen for success
 
 ```JavaScript
@@ -87,7 +105,8 @@ document.getElementsByTagName('cardano-connect')[0].addEventListener(
     const { detail } = evt;
     console.log(detail);
   },
-false);
+  false
+);
 ```
 
 ## Listen for error
@@ -99,5 +118,36 @@ document.getElementsByTagName('cardano-connect')[0].addEventListener(
     const { detail } = evt;
     console.log(detail);
   },
-false);
+  false
+);
+```
+
+## Listen for JSON wallet list event and fire selected wallet event
+
+```JavaScript
+document.getElementsByTagName('cardano-connect')[0].addEventListener(
+  'CardanoConnectWalletList', // event name
+  (evt) => {
+    const { detail } = evt;
+    const { wallets } = detail; // wallet list
+    wallets.forEach((wallet) => { // iterate over collection and display as you like
+      const btn = document.createElement('button');
+      btn.innerText = wallet.display;
+      if (!wallet.installed) {
+        btn.setAttribute('disabled', 'disabled');
+      }
+      btn.onclick = (e) => {
+        const evt = new CustomEvent(
+          'CardanoConnectWalletSelected',
+          { detail: { wallet } }
+        );
+        jsonButton.dispatchEvent(evt); // dispatch event with selected wallet
+      };
+      document.getElementById('walletButtons').appendChild(btn);
+    });
+  },
+  {
+    once: true
+  }
+);
 ```

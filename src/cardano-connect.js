@@ -161,7 +161,6 @@ class CardanoConnect extends HTMLElement {
   #GERO = 'GeroWallet';
   #NUFI = 'NuFi';
   #wallets = [
-    // Not currently supported
     {
       display: this.#ETERNL,
       id: this.#ETERNL.toLowerCase(),
