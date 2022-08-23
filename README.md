@@ -11,8 +11,8 @@ it will emit an event *CardanoConnectWallet* or in the case of an error *Cardano
 - [Eternl](https://eternl.io/)
 - [Flint](https://chrome.google.com/webstore/detail/flint-wallet/hnhobjmcibchnmglfbldbfabcgaknlkj)
 - [GeroWallet](https://gerowallet.io/)
-- [Nami](https://namiwallet.io/)
 - [Yoroi](http://yoroiwallet.com/)
+- [NuFi](http://nu.fi) __coming soon__
 
 ## Component API
 
