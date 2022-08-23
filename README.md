@@ -54,6 +54,7 @@ Component [documentation](custom-elements.md)
 ```
 
 **text** attribute is optional, the default value is *Connect wallet*
+
 **json** attribute is optional, the default value is *false*, returns a json list of supported wallets
 
 ## How does it work?
