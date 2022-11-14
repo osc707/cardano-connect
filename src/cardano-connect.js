@@ -99,6 +99,7 @@ import { Buffer } from 'buffer';
  * @element cardano-connect
  * 
  * @fires {event} CardanoConnectWallet - fired when a user selects a wallet and the payload contains:
+ *   - id: selected wallet id
  *   - address: selected wallet address
  *   - name: selected wallet name
  *   - icon: selected wallet icon
@@ -292,6 +293,7 @@ class CardanoConnect extends HTMLElement {
             cancelable: false,
             composed: true,
             detail: {
+              id: wallet.id,
               name: cardanoWallet.name,
               icon: wallet.icon,
               api,
@@ -314,6 +316,7 @@ class CardanoConnect extends HTMLElement {
             cancelable: false,
             composed: true,
             detail: {
+              id: wallet.id,
               address,
               name: cardanoWallet.name,
               icon: wallet.icon,

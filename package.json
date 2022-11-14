@@ -37,13 +37,13 @@
   ],
   "dependencies": {
     "@emurgo/cardano-message-signing-browser": "^1.0.1",
-    "@emurgo/cardano-serialization-lib-browser": "^11.0.1",
+    "@emurgo/cardano-serialization-lib-browser": "^11.1.0",
     "buffer": "^6.0.3"
   },
   "devDependencies": {
-    "@types/node": "^18.7.6",
+    "@types/node": "^18.11.9",
     "http-server": "^14.1.1",
-    "webpack": "^5.74.0",
+    "webpack": "^5.75.0",
     "webpack-cli": "^4.10.0"
   }
 }
