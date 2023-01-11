@@ -242,12 +242,12 @@ class CardanoConnect extends HTMLElement {
     this.#buildWalletList();
     this.shadowRoot.getElementById(this.#BUTTON_ID).innerText = this.#buttonText;
     this.shadowRoot.getElementById(this.#BUTTON_ID).onclick = () => this.#toggleWallets();
+    this.#setupWalletSelect();
   }
 
   #toggleWallets() {
     if (this.#jsonList) {
       this.#dispatchWalletList();
-      this.#setupWalletSelect();
       return;
     }
     const walletsElm = this.shadowRoot.getElementById(this.#WALLETS_ID);

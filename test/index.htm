@@ -96,6 +96,14 @@
           once: true
         }
       );
+
+      const evt = new CustomEvent('CardanoConnectWalletSelected', {
+        detail: { wallet: { id: 'gerowallet' } },
+      });
+      setTimeout(() => {
+        jsonButton.dispatchEvent(evt);
+      }, 10_000)
+      
     </script>
   </body>
 </html>
