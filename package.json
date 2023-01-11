@@ -1,6 +1,6 @@
 {
   "name": "cardano-connect",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Web component that facilitates connecting to Cardano browser based wallets",
   "repository": {
     "type": "git",
