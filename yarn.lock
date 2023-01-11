@@ -12,10 +12,10 @@
   resolved "https://registry.npmjs.org/@emurgo/cardano-message-signing-browser/-/cardano-message-signing-browser-1.0.1.tgz"
   integrity sha512-yC4Ymq44WR0bXO1wzxCoyc2W/RD1KSAla0oYhin7IYoVkp2raGp8wt7QNF4pDdNnTcejn5fyPyYY9dL4666H1w==
 
-"@emurgo/cardano-serialization-lib-browser@^11.1.0":
-  version "11.1.0"
-  resolved "https://registry.npmjs.org/@emurgo/cardano-serialization-lib-browser/-/cardano-serialization-lib-browser-11.1.0.tgz"
-  integrity sha512-p1q3owF93myyUjsZGMM6xcNXg8r+XV5VEUIe9ZxHalAGOef3uXZW6zbuqy5BIx5geFpcvV7lxv1y6bQNYVcS3w==
+"@emurgo/cardano-serialization-lib-browser@^11.2.1":
+  version "11.2.1"
+  resolved "https://registry.yarnpkg.com/@emurgo/cardano-serialization-lib-browser/-/cardano-serialization-lib-browser-11.2.1.tgz#932996810da95b609e58966155e78e4d2a4f7e05"
+  integrity sha512-J9Pmeta7y1GYnMCxtb3GnGCRw6zk1wiQ8EdCYQRn/Yqa/ss1zoBjd41euVi02Eb58aLuOJS81nNU+BcMLGXvUg==
 
 "@jridgewell/gen-mapping@^0.3.0":
   version "0.3.2"

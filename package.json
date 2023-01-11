@@ -37,7 +37,7 @@
   ],
   "dependencies": {
     "@emurgo/cardano-message-signing-browser": "^1.0.1",
-    "@emurgo/cardano-serialization-lib-browser": "^11.1.0",
+    "@emurgo/cardano-serialization-lib-browser": "^11.2.1",
     "buffer": "^6.0.3"
   },
   "devDependencies": {
